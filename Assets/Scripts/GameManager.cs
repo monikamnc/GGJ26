@@ -3,10 +3,8 @@ using UnityEngine;
 public enum GameState
 {
     Start,
-    Avivar,
-    Rotar,
-    Picar,
-    Enfriar,
+    MinigameStart,
+    MinigameEnd,
     Resultados
 }
 
@@ -22,9 +20,11 @@ public class GameManager : MonoBehaviour
 
     public GameState currentState;
 
-    Minigame[] minigames;
+    public Minigame[] minigames;
 
     MinigameEndData FinalScores;
+
+    int currentMinigameId;
     
     void OnFinishedMinigame (MinigameEndData data)
     {
@@ -32,16 +32,13 @@ public class GameManager : MonoBehaviour
         FinalScores.P1Score += data.P1Score;
         FinalScores.P2Score += data.P2Score;
 
-        // minigames[0].OnFinishedMinigame -= OnFinishedMinigame;
-        // Cambiar al siguente minijuego
-        ChangeState(GameState.Resultados);
+        // Se acaba el minijuego
+        ChangeState(GameState.MinigameEnd);
     }
 
     void Awake()
     {
         Instance = this;
-        minigames = new Minigame[4];
-        minigames[0] = GameObject.Find("Picar").GetComponent<Picar>();
     }
 
     void Start()
@@ -62,13 +59,26 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Start:
                 Debug.Log("Entrando al juego");
-                ChangeState(GameState.Picar);
+                ChangeState(GameState.MinigameStart);
                 break;
 
-            case GameState.Picar:
-                Debug.Log("Entrando Picar");
-                minigames[0].StartMinigame();
-                minigames[0].OnFinishedMinigame += OnFinishedMinigame;
+            case GameState.MinigameStart:
+                Debug.Log("Minigame Start!");
+                minigames[currentMinigameId].OnFinishedMinigame += OnFinishedMinigame;
+                minigames[currentMinigameId].StartMinigame();
+                break;
+
+            case GameState.MinigameEnd:
+                Debug.Log("Minigame Ends!");
+                currentMinigameId++;
+
+                if (currentMinigameId >= minigames.Length)
+                {
+                    ChangeState(GameState.Resultados);
+                }
+
+                ChangeState(GameState.MinigameStart);
+
                 break;
 
             case GameState.Resultados:
@@ -81,8 +91,9 @@ public class GameManager : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Picar:
-                Debug.Log("Saliendo Picar");
+            case GameState.MinigameStart:
+                Debug.Log("Saliendo Minigame Start");
+                minigames[currentMinigameId].OnFinishedMinigame -= OnFinishedMinigame;
                 break;
 
             case GameState.Resultados:
@@ -90,5 +101,4 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
 }

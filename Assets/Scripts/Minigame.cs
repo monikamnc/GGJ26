@@ -6,7 +6,9 @@ public class Minigame : MonoBehaviour
     public event Action<MinigameEndData> OnFinishedMinigame;
 
     public virtual void StartMinigame()
-    { }
+    {
+        gameObject.SetActive(true);
+    }
 
     public virtual void FinishMinigame(float Player1Score, float Player2Score)
     {
@@ -19,7 +21,6 @@ public class Minigame : MonoBehaviour
         OnFinishedMinigame?.Invoke(data);
 
         gameObject.SetActive(false);
-
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
