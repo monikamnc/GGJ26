@@ -34,11 +34,14 @@ public class GameManager : MonoBehaviour
 
         // minigames[0].OnFinishedMinigame -= OnFinishedMinigame;
         // Cambiar al siguente minijuego
+        ChangeState(GameState.Resultados);
     }
 
     void Awake()
     {
         Instance = this;
+        minigames = new Minigame[4];
+        minigames[0] = GameObject.Find("Picar").GetComponent<Picar>();
     }
 
     void Start()
@@ -68,9 +71,9 @@ public class GameManager : MonoBehaviour
                 minigames[0].OnFinishedMinigame += OnFinishedMinigame;
                 break;
 
-            //case GameState.MiniJuegoB:
-            //    Debug.Log("Entrando Minijuego B");
-            //    break;
+            case GameState.Resultados:
+                Debug.Log("Entrando Resultados");
+                break;
         }
     }
 
@@ -79,12 +82,12 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.Picar:
-                Debug.Log("Saliendo Minijuego A");
+                Debug.Log("Saliendo Picar");
                 break;
 
-            //case GameState.MiniJuegoB:
-            //    Debug.Log("Saliendo Minijuego B");
-            //    break;
+            case GameState.Resultados:
+                Debug.Log("Saliendo Resultados");
+                break;
         }
     }
 

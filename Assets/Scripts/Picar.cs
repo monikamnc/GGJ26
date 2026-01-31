@@ -4,45 +4,59 @@ using UnityEngine.UI;
 
 public class Picar : Minigame
 {
-    public Slider picarSlider;
-    public InputActionReference picarAction;
+    public Slider picarSliderP1;
+    public Slider picarSliderP2;
+    public InputActionReference picarActionP1;
+    public InputActionReference picarActionP2;
 
     public override void StartMinigame()
     {
         base.StartMinigame();
     }
 
-    public override void FinishMinigame(MinigameEndData data)
-    {
-
-
-        base.FinishMinigame(data);
-    }
-
     void OnEnable()
     {
-        picarAction.action.performed += OnProgress;
-        picarAction.action.Enable();
+        picarActionP1.action.performed += OnProgressP1;
+        picarActionP2.action.performed += OnProgressP2;
+
+        picarActionP1.action.Enable();
+        picarActionP2.action.Enable();
     }
 
     void OnDisable()
     {
-        picarAction.action.performed -= OnProgress;
-        picarAction.action.Disable();
+        picarActionP1.action.performed -= OnProgressP1;
+        picarActionP2.action.performed -= OnProgressP2;
+
+        picarActionP1.action.Disable();
+        picarActionP2.action.Disable();
     }
 
-    void OnProgress(InputAction.CallbackContext ctx)
+    void OnProgressP1(InputAction.CallbackContext ctx)
     {
-        picarSlider.value += 0.1f;
-        //progressBar.value += step;
+        picarSliderP1.value += 0.1f;
         //progressBar.value = Mathf.Clamp01(progressBar.value);
 
-        if (picarSlider.value >= 1f)
+        if (picarSliderP1.value >= 1f)
         {
             Debug.Log("¡Barra completa!");
-            GameManager.Instance.ChangeState(GameState.Enfriar);
+            //GameManager.Instance.ChangeState(GameState.Enfriar);
 
-            
+            FinishMinigame(picarSliderP1.value, picarSliderP2.value);
+        }
+        //Debug.Log("1");
+    }
+
+    void OnProgressP2(InputAction.CallbackContext ctx)
+    {
+        picarSliderP2.value += 0.1f;
+
+        if (picarSliderP2.value >= 1f)
+        {
+            Debug.Log("¡Barra completa!");
+            //GameManager.Instance.ChangeState(GameState.Enfriar);
+
+            FinishMinigame(picarSliderP1.value, picarSliderP2.value);
         }
         //Debug.Log("1");
     }
