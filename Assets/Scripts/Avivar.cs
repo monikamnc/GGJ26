@@ -63,7 +63,7 @@ public class Avivar : Minigame
     {
         avivarSliderP1.value += (markerVelocityStep[roundP1] * markerDirectionP1);
 
-        if (avivarSliderP1.value <= 0 || avivarSliderP1.value >= 1)
+        if (avivarSliderP1.value <= avivarSliderP1.minValue || avivarSliderP1.value >= avivarSliderP1.maxValue)
         {
             markerDirectionP1 *= -1;
         }
@@ -73,10 +73,15 @@ public class Avivar : Minigame
     {
         avivarSliderP2.value += (markerVelocityStep[roundP2] * markerDirectionP2);
 
-        if (avivarSliderP2.value <= 0 || avivarSliderP2.value >= 1)
+        if (avivarSliderP2.value <= avivarSliderP2.minValue || avivarSliderP2.value >= avivarSliderP2.maxValue)
         {
             markerDirectionP2 *= -1;
         }
+    }
+
+    float CalculatePlayerScore(float[] playerScore)
+    {
+        return 0.0f;
     }
 
     void CheckIfMinigameIsFinished()
@@ -84,10 +89,7 @@ public class Avivar : Minigame
         if (!player1Finished || !player2Finished)
             return;
 
-        // Calcular puntuación
-        //
-
-        FinishMinigame(0.0f, 0.0f);
+        FinishMinigame(CalculatePlayerScore(P1Score), CalculatePlayerScore(P2Score));
     }
 
     void OnProgressP1(InputAction.CallbackContext ctx)

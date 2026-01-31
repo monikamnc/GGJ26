@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 520813265}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1693,6 +1693,7 @@ MonoBehaviour:
   picarSliderP2: {fileID: 786690332}
   picarActionP1: {fileID: 9033077868429075689, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   picarActionP2: {fileID: -8088929768105714911, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  stepValue: 0.5
 --- !u!1 &1385791358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,8 +1975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   currentState: 0
   minigames:
-  - {fileID: 246647497}
   - {fileID: 1276796371}
+  - {fileID: 246647497}
 --- !u!4 &1584132385
 Transform:
   m_ObjectHideFlags: 0
@@ -2275,7 +2276,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 350464945}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2422,6 +2423,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 246647496}
   - {fileID: 1276796370}
+  - {fileID: 246647496}
   - {fileID: 405094179}

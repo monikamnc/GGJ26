@@ -9,6 +9,8 @@ public class Picar : Minigame
     public InputActionReference picarActionP1;
     public InputActionReference picarActionP2;
 
+    public float stepValue;
+
     void OnEnable()
     {
         picarActionP1.action.performed += OnProgressP1;
@@ -29,7 +31,7 @@ public class Picar : Minigame
 
     void OnProgressP1(InputAction.CallbackContext ctx)
     {
-        picarSliderP1.value += 0.1f;
+        picarSliderP1.value += stepValue;
         //progressBar.value = Mathf.Clamp01(progressBar.value);
 
         if (picarSliderP1.value >= 1f)
@@ -44,7 +46,7 @@ public class Picar : Minigame
 
     void OnProgressP2(InputAction.CallbackContext ctx)
     {
-        picarSliderP2.value += 0.1f;
+        picarSliderP2.value += stepValue;
 
         if (picarSliderP2.value >= 1f)
         {

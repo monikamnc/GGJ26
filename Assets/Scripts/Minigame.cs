@@ -18,9 +18,9 @@ public class Minigame : MonoBehaviour
             P2Score = Player2Score
         };
 
-        OnFinishedMinigame?.Invoke(data);
-
         gameObject.SetActive(false);
+
+        OnFinishedMinigame?.Invoke(data);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

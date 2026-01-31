@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
                 if (currentMinigameId >= minigames.Length)
                 {
                     ChangeState(GameState.Resultados);
+                    break;
                 }
 
                 ChangeState(GameState.MinigameStart);
