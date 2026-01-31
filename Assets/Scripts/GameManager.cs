@@ -10,11 +10,31 @@ public enum GameState
     Resultados
 }
 
+public struct MinigameEndData
+{
+    public float P1Score;
+    public float P2Score;
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public GameState currentState;
+
+    Minigame[] minigames;
+
+    MinigameEndData FinalScores;
+    
+    void OnFinishedMinigame (MinigameEndData data)
+    {
+        // Añadir puntuación
+        FinalScores.P1Score += data.P1Score;
+        FinalScores.P2Score += data.P2Score;
+
+        // minigames[0].OnFinishedMinigame -= OnFinishedMinigame;
+        // Cambiar al siguente minijuego
+    }
 
     void Awake()
     {
@@ -44,6 +64,8 @@ public class GameManager : MonoBehaviour
 
             case GameState.Picar:
                 Debug.Log("Entrando Picar");
+                minigames[0].StartMinigame();
+                minigames[0].OnFinishedMinigame += OnFinishedMinigame;
                 break;
 
             //case GameState.MiniJuegoB:

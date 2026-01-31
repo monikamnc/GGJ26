@@ -2,10 +2,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Picar : MonoBehaviour
+public class Picar : Minigame
 {
     public Slider picarSlider;
     public InputActionReference picarAction;
+
+    public override void StartMinigame()
+    {
+        base.StartMinigame();
+    }
+
+    public override void FinishMinigame(MinigameEndData data)
+    {
+
+
+        base.FinishMinigame(data);
+    }
 
     void OnEnable()
     {
@@ -29,6 +41,8 @@ public class Picar : MonoBehaviour
         {
             Debug.Log("¡Barra completa!");
             GameManager.Instance.ChangeState(GameState.Enfriar);
+
+            
         }
         //Debug.Log("1");
     }
