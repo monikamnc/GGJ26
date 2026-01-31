@@ -25,10 +25,11 @@ public class Picar : MonoBehaviour
         //progressBar.value += step;
         //progressBar.value = Mathf.Clamp01(progressBar.value);
 
-        //if (progressBar.value >= 1f)
-        //{
-        //    Debug.Log("¡Barra completa!");
-        //}
+        if (picarSlider.value >= 1f)
+        {
+            Debug.Log("¡Barra completa!");
+            GameManager.Instance.ChangeState(GameState.MiniJuegoB);
+        }
         //Debug.Log("1");
     }
 
