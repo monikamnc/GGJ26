@@ -9,11 +9,6 @@ public class Picar : Minigame
     public InputActionReference picarActionP1;
     public InputActionReference picarActionP2;
 
-    public override void StartMinigame()
-    {
-        base.StartMinigame();
-    }
-
     void OnEnable()
     {
         picarActionP1.action.performed += OnProgressP1;

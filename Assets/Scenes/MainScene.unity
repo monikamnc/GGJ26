@@ -166,8 +166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Avivar
   avivarSliderP1: {fileID: 938798119}
   avivarSliderP2: {fileID: 1912243323}
-  avivarActionP1: {fileID: 0}
-  avivarActionP2: {fileID: 0}
+  avivarActionP1: {fileID: 9033077868429075689, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  avivarActionP2: {fileID: -8088929768105714911, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  markerVelocityMin: 0.05
+  markerVelocityMax: 0.2
+  maxRounds: 3
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,8 +1974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   currentState: 0
   minigames:
-  - {fileID: 1276796371}
   - {fileID: 246647497}
+  - {fileID: 1276796371}
 --- !u!4 &1584132385
 Transform:
   m_ObjectHideFlags: 0
