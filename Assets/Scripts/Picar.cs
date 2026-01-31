@@ -28,7 +28,7 @@ public class Picar : MonoBehaviour
         if (picarSlider.value >= 1f)
         {
             Debug.Log("¡Barra completa!");
-            GameManager.Instance.ChangeState(GameState.MiniJuegoB);
+            GameManager.Instance.ChangeState(GameState.Enfriar);
         }
         //Debug.Log("1");
     }
