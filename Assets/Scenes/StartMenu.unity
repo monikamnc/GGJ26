@@ -845,7 +845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1402942330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1464,10 +1464,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You are rival blacksmithers that need to craft the best mask for your
-    knight, which will be participating in a juste. \n\nYour knight's life is on
-    the line, so you have to follow the indications and craft a beter mask than the
-    other player!"
+  m_Text: "You are rival knighs that need to craft your mask for the juste that is
+    coming. \n\nYour head is on the line, so you have to follow the indications and
+    craft a beter mask than the other player!"
 --- !u!222 &2122186498
 CanvasRenderer:
   m_ObjectHideFlags: 0
