@@ -23,19 +23,18 @@ Deberéis seguir un total de tres pasos para crear vuestra máscara.
 
 ## Vídeo Tráiler
 
-[!\[Pikatala]](https://www.youtube.com/watch?v=NHS5MyYtYcI)
+[[Vídeo Tráiler]](https://www.youtube.com/watch?v=NHS5MyYtYcI)
 
 
 
 ## Pantallas del Videojuego
 
-!\[Main Menu](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/MainMenu.png)
+![Main Menu](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/MainMenu.png)
 
-!\[Instrucciones](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/Instructions.png)
+![Instrucciones](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/Instructions.png)
 
-!\[Bufar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/BufarMinigane.png)
+![Bufar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/BufarMinigame.png)
 
-!\[Pikar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/PikarMinigane.png)
+![Pikar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/PikarMinigame.png)
 
-!\[Lijar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/LijarMinigane.png)
-
+![Lijar Minijuego](https://github.com/monikamnc/GGJ26/blob/main/Screenshots/LijarMinigame.png)
