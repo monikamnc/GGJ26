@@ -42,4 +42,9 @@ public class SceneController : MonoBehaviour
         anyKeyInputAction.action.performed += OnPressedKey;
         anyKeyInputAction.action.Enable();
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
