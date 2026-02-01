@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public enum GameState
 {
@@ -25,7 +27,9 @@ public class GameManager : MonoBehaviour
     MinigameEndData FinalScores;
 
     int currentMinigameId;
-    
+
+    Text countdownText;
+
     void OnFinishedMinigame (MinigameEndData data)
     {
         // Añadir puntuación
@@ -36,9 +40,29 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.MinigameEnd);
     }
 
+    public IEnumerator StartCountdown()
+    {
+        countdownText.gameObject.SetActive(true);
+
+        for (int i = 3; i > 0; i--)
+        {
+            countdownText.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+
+        countdownText.text = "GO!";
+        Debug.Log("GO!");
+        yield return new WaitForSeconds(1f);
+
+        countdownText.gameObject.SetActive(false);
+        minigames[currentMinigameId].StartMinigame();
+
+    }
+
     void Awake()
     {
         Instance = this;
+        countdownText = GameObject.Find("CountdownText").GetComponent<Text>();
     }
 
     void Start()
@@ -64,8 +88,8 @@ public class GameManager : MonoBehaviour
 
             case GameState.MinigameStart:
                 Debug.Log("Minigame Start!");
+                StartCoroutine(StartCountdown());
                 minigames[currentMinigameId].OnFinishedMinigame += OnFinishedMinigame;
-                minigames[currentMinigameId].StartMinigame();
                 break;
 
             case GameState.MinigameEnd:
