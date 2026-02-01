@@ -845,7 +845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1402942330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneManager
   BlackBackgroundAndText: {fileID: 1402942329}
   PressAnyKeyText: {fileID: 1502202699}
-  TextAlphaHighlightStep: 0.005
+  TextAlphaHighlightStep: 0.05
   anyKeyInputAction: {fileID: 8456465153185297709, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1944114732
 GameObject:

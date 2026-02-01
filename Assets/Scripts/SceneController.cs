@@ -18,7 +18,7 @@ public class SceneController : MonoBehaviour
         PressAnyKeyText.color = new Color(1.0f, 1.0f, 1.0f, TextAlpha);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         TextAlpha += TextAlphaHighlightStep;
         PressAnyKeyText.color = new Color(1.0f, 1.0f, 1.0f, TextAlpha);

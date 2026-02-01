@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -31,6 +32,14 @@ public class GameManager : MonoBehaviour
     Text countdownText;
     public Text instructionsTextP1;
     public Text instructionsTextP2;
+
+    public Text winningTextPlayer;
+    public Image WinningImagePlayer;
+
+    public Sprite RedMask;
+    public Sprite BlueMask;
+
+    public GameObject FinishScreen;
 
     void OnFinishedMinigame (MinigameEndData data)
     {
@@ -73,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        FinishScreen.SetActive(false);
         ChangeState(GameState.Start);
     }
 
@@ -120,6 +130,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log(FinalScores.P1Score);
                 FinalScores.P2Score /= minigames.Length;
                 Debug.Log(FinalScores.P2Score);
+
+                ShowWinScreen();
+
                 break;
         }
     }
@@ -137,5 +150,30 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Saliendo Resultados");
                 break;
         }
+    }
+
+    void ShowWinScreen()
+    {
+        FinishScreen.SetActive(true);
+        if (FinalScores.P1Score > FinalScores.P2Score)
+        {
+            winningTextPlayer.text = "Left player wins!";
+            WinningImagePlayer.sprite = RedMask;
+        }
+        if (FinalScores.P1Score < FinalScores.P2Score)
+        {
+            winningTextPlayer.text = "Right player wins!";
+            WinningImagePlayer.sprite = BlueMask;
+        }
+        if (FinalScores.P1Score == FinalScores.P2Score)
+        {
+            winningTextPlayer.text = "Incredible! It was a draw!";
+            WinningImagePlayer.sprite = RedMask;
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }
