@@ -89,9 +89,27 @@ public class Avivar : Minigame
         }
     }
 
+    float CalculateAvivarScore(float sliderValue, float minValue, float maxValue)
+    {
+        float center = (minValue + maxValue) * 0.5f;
+        float distance = Mathf.Abs(sliderValue - center);
+        float maxDistance = (maxValue - minValue) * 0.5f;
+
+        // Normalize
+        float normalized = distance / maxDistance;
+
+        // Invertimos para que 1 = centro perfecto
+        return 1f - Mathf.Clamp01(normalized);
+    }
+
     float CalculatePlayerScore(float[] playerScore)
     {
-        return 0.0f;
+        float total = 0f;
+        for (int i = 0; i < playerScore.Length; i++)
+            total += playerScore[i];
+
+        Debug.Log(total/maxRounds);
+        return total/maxRounds;
     }
 
     void CheckIfMinigameIsFinished()
@@ -111,7 +129,7 @@ public class Avivar : Minigame
             CambiarBufadorTemporal(BufadorP1, 0.2f)
         );
 
-        P1Score[roundP1] = avivarSliderP1.value;
+        P1Score[roundP1] = CalculateAvivarScore(avivarSliderP1.value, avivarSliderP1.minValue, avivarSliderP1.maxValue);
         avivarSliderP1.value = 0;
 
         roundP1++;
@@ -135,7 +153,7 @@ public class Avivar : Minigame
             CambiarBufadorTemporal(BufadorP2, 0.2f)
         );
 
-        P2Score[roundP2] = avivarSliderP2.value;
+        P2Score[roundP2] = CalculateAvivarScore(avivarSliderP2.value, avivarSliderP2.minValue, avivarSliderP2.maxValue);
         avivarSliderP2.value = 0;
 
         roundP2++;
