@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Avivar : Minigame
 {
@@ -33,6 +33,9 @@ public class Avivar : Minigame
 
     bool player1Finished;
     bool player2Finished;
+
+    Coroutine bufadorP1Routine;
+    Coroutine bufadorP2Routine;
 
     public override void StartMinigame()
     {
@@ -101,7 +104,12 @@ public class Avivar : Minigame
 
     void OnKeyPressedP1(InputAction.CallbackContext ctx)
     {
-        BufadorP1.sprite = BufadorSpriteTancat;
+        if (bufadorP1Routine != null)
+            StopCoroutine(bufadorP1Routine);
+
+        bufadorP1Routine = StartCoroutine(
+            CambiarBufadorTemporal(BufadorP1, 0.2f)
+        );
 
         P1Score[roundP1] = avivarSliderP1.value;
         avivarSliderP1.value = 0;
@@ -120,6 +128,13 @@ public class Avivar : Minigame
 
     void OnKeyPressedP2(InputAction.CallbackContext ctx)
     {
+        if (bufadorP2Routine != null)
+            StopCoroutine(bufadorP2Routine);
+
+        bufadorP2Routine = StartCoroutine(
+            CambiarBufadorTemporal(BufadorP2, 0.2f)
+        );
+
         P2Score[roundP2] = avivarSliderP2.value;
         avivarSliderP2.value = 0;
 
@@ -133,6 +148,15 @@ public class Avivar : Minigame
             CheckIfMinigameIsFinished();
             return;
         }
+    }
+
+    IEnumerator CambiarBufadorTemporal(Image bufador, float tiempo)
+    {
+        bufador.sprite = BufadorSpriteTancat;
+        bufador.transform.localScale = Vector3.one * 1.1f;
+        yield return new WaitForSeconds(tiempo);
+        bufador.sprite = BufadorSpriteObert;
+        bufador.transform.localScale = Vector3.one;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
