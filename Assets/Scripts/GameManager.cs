@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     int currentMinigameId;
 
     Text countdownText;
+    public Text instructionsTextP1;
+    public Text instructionsTextP2;
 
     void OnFinishedMinigame (MinigameEndData data)
     {
@@ -55,6 +57,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countdownText.gameObject.SetActive(false);
+        instructionsTextP1.text = minigames[currentMinigameId].instructionsTextP1;
+        instructionsTextP2.text = minigames[currentMinigameId].instructionsTextP2;
+        instructionsTextP1.gameObject.SetActive(true);
+        instructionsTextP2.gameObject.SetActive(true);
         minigames[currentMinigameId].StartMinigame();
 
     }
@@ -94,6 +100,8 @@ public class GameManager : MonoBehaviour
 
             case GameState.MinigameEnd:
                 Debug.Log("Minigame Ends!");
+                instructionsTextP1.gameObject.SetActive(false);
+                instructionsTextP2.gameObject.SetActive(false);
                 currentMinigameId++;
 
                 if (currentMinigameId >= minigames.Length)

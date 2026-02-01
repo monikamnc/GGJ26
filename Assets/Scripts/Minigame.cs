@@ -4,6 +4,8 @@ using UnityEngine;
 public class Minigame : MonoBehaviour
 {
     public event Action<MinigameEndData> OnFinishedMinigame;
+    public string instructionsTextP1;
+    public string instructionsTextP2;
 
     public virtual void StartMinigame()
     {
