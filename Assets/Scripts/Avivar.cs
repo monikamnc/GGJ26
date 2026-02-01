@@ -7,6 +7,13 @@ public class Avivar : Minigame
 {
     public Slider avivarSliderP1;
     public Slider avivarSliderP2;
+
+    public Image BufadorP1;
+    public Image BufadorP2;
+
+    public Sprite BufadorSpriteObert;
+    public Sprite BufadorSpriteTancat;
+
     public InputActionReference avivarActionP1;
     public InputActionReference avivarActionP2;
 
@@ -48,10 +55,10 @@ public class Avivar : Minigame
 
     void OnEnable()
     {
-        avivarActionP1.action.performed += OnProgressP1;
-        avivarActionP2.action.performed += OnProgressP2;
-
+        avivarActionP1.action.performed += OnKeyPressedP1;
         avivarActionP1.action.Enable();
+
+        avivarActionP2.action.performed += OnKeyPressedP2;
         avivarActionP2.action.Enable();
     }
 
@@ -92,8 +99,10 @@ public class Avivar : Minigame
         FinishMinigame(CalculatePlayerScore(P1Score), CalculatePlayerScore(P2Score));
     }
 
-    void OnProgressP1(InputAction.CallbackContext ctx)
+    void OnKeyPressedP1(InputAction.CallbackContext ctx)
     {
+        BufadorP1.sprite = BufadorSpriteTancat;
+
         P1Score[roundP1] = avivarSliderP1.value;
         avivarSliderP1.value = 0;
 
@@ -102,13 +111,14 @@ public class Avivar : Minigame
         if (roundP1 >= maxRounds)
         {
             player1Finished = true;
-            avivarActionP1.action.performed -= OnProgressP1;
+            avivarActionP1.action.performed -= OnKeyPressedP1;
             avivarActionP1.action.Disable();
             CheckIfMinigameIsFinished();
+            return;
         }
     }
 
-    void OnProgressP2(InputAction.CallbackContext ctx)
+    void OnKeyPressedP2(InputAction.CallbackContext ctx)
     {
         P2Score[roundP2] = avivarSliderP2.value;
         avivarSliderP2.value = 0;
@@ -118,9 +128,10 @@ public class Avivar : Minigame
         if (roundP2 >= maxRounds)
         {
             player2Finished = true;
-            avivarActionP2.action.performed -= OnProgressP2;
+            avivarActionP2.action.performed -= OnKeyPressedP2;
             avivarActionP2.action.Disable();
             CheckIfMinigameIsFinished();
+            return;
         }
     }
 
