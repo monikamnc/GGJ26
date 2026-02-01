@@ -104,6 +104,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LlimarUp",
+                    "type": "Button",
+                    "id": "17ae7145-6205-4cfb-9166-16072ef760fc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -469,6 +478,17 @@
                     "action": "AnyKey",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5086d36b-ca6d-4610-9c76-e80d566b269e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LlimarUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -561,6 +581,15 @@
                     "name": "Picar",
                     "type": "Button",
                     "id": "fd0a1ea3-dcd3-4678-81c1-f1e89ead3cef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LlimarUp",
+                    "type": "Button",
+                    "id": "4a76457c-ed6f-4d08-8037-0da3db1bd74c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -917,6 +946,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Picar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c755b99e-866b-4428-874d-8f0b9d9b3532",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LlimarUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
