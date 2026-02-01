@@ -116,6 +116,10 @@ public class GameManager : MonoBehaviour
 
             case GameState.Resultados:
                 Debug.Log("Entrando Resultados");
+                FinalScores.P1Score /= minigames.Length;
+                Debug.Log(FinalScores.P1Score);
+                FinalScores.P2Score /= minigames.Length;
+                Debug.Log(FinalScores.P2Score);
                 break;
         }
     }
